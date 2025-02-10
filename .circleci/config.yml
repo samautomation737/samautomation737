@@ -51,8 +51,8 @@ jobs:
               
             else
               
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
                 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/*.js"
