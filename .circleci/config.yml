@@ -36,7 +36,8 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/404-2.js" 
               
 
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Newmembership.js" 
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Newmembership.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Search.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
 
@@ -59,7 +60,7 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/url/Products/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/url/Products variant/*.js"
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js" 
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js" 
             fi
           no_output_timeout: 180m  # Ensures the Cypress test execution doesn’t timeout due to inactivity
       - store_artifacts:
