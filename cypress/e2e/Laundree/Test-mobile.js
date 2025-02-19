@@ -197,20 +197,19 @@ describe('Test Mobile', () => {
         cy.get('#menu-item-27683 > .ekit-menu-nav-link').click({force:true});
         // Verify Blog page opened & "Laundry" heading is available in the page
         cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain", "Laundry & Dry Clean");
+  
+  // Verify blog listing displays
+  cy.get("body > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > a:nth-child(1) > span:nth-child(1)")
+  .should("be.visible");
 
-
-        // Verify blog listing displays
-        cy.get("body > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > a:nth-child(1) > span:nth-child(1)")
-            .should("be.visible");
-
-        // Click on Blog link
-        cy.get("body > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > a:nth-child(1) > span:nth-child(1)").click();
-        // Verify Blog detail page displays
-        cy.get('.elementor-element-c566d5d > .elementor-widget-container > .elementor-heading-title')
-            .should("be.visible");
-        cy.go(-1);
-        cy.go(-1);
-
-    })
+// Click on Blog link
+  cy.get("body > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > a:nth-child(1) > span:nth-child(1)").click();
+  // Verify Blog detail page displays
+  cy.get('.elementor-element-c566d5d > .elementor-widget-container > .elementor-heading-title')
+  .should("be.visible");
+  cy.go(-1);
+  cy.go(-1);
+  
+})
 
 })
