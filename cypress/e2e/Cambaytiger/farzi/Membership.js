@@ -28,7 +28,7 @@ describe('Membership functionality', () => {
     Home.selectPrimaryLocation();
 
     //  Login
-    Home.loginstage();
+    Home.login();
     
     // select location & open cambay club page
     Membership.openMembershipPage();
@@ -111,7 +111,7 @@ describe('Membership functionality', () => {
     Home.selectPrimaryLocation();
 
     //  Login
-    Home.loginstage();
+    Home.login();
     
     // select location & open cambay club page
     Membership.openMembershipPage();
@@ -191,7 +191,7 @@ describe('Membership functionality', () => {
         Home.selectPrimaryLocation();
 
         // Login
-       Home.loginstage();
+       Home.login();
        
        // select location & open cambay club page
        Membership.openMembershipPage();

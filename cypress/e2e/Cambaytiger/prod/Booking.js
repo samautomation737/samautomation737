@@ -41,7 +41,7 @@ describe('Booking flow', () => {
     Home.selectPrimaryLocation();
 
     //  Login
-    Home.loginstage();
+    Home.login();
 
 
     locations.forEach((location) => {
