@@ -14,23 +14,13 @@ class Home {
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
     cy.get("button[type='submit']").click();
-    cy.get("#otp-0").type("123456",);
     cy.wait(5000);
-    cy.get("button[type='submit']").click();
-    cy.wait(30000);
+    cy.get("#otp-0").type("123456", { delay: 100, force: true });
+    cy.wait(5000);
+    cy.get("button[type='submit']").click({ delay: 100, force: true });
+    cy.wait(40000);
   }
   
-  login() {
-    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span').click();
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-    cy.wait(5000);
-    cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
-    cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.get("#otp-0").type("123456",);
-    cy.wait(5000);
-    cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(30000);
-  }
 
   cartClear() {
     // cy.get(".our-categories__heading").should('be.visible');
