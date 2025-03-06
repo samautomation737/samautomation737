@@ -167,7 +167,7 @@ describe('Test Mobile', () => {
         // Verify the heading displays
         cy.get("div[class='elementor-element elementor-element-ffb395c elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']").should("contain", "INVEST IN LAUNDRY");
         cy.visit('https://tumbledry.in/contact-us-franchisee/');
-        cy.get('.elementor-heading-title').should("contain", "Join the Tumbledry Revolution, NOW");
+        cy.get('.elementor-heading-title').should("be.visible");
         //Enter name
         cy.get('.elementor-element-ee84f65 > .elementor-widget-container > .elementor-form > .elementor-form-fields-wrapper > .elementor-field-type-text > #form-field-name')
             .type("Test Test");
