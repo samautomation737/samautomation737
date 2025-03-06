@@ -159,44 +159,44 @@ describe('Test Mobile', () => {
         cy.go(-1);
 
 
+// Franchise
+  // Click on "Get Franchise" menu item
+  cy.get('#menu-item-17 > .ekit-menu-nav-link').click();
+  // cy.get('#menu-item-17 > .ekit-menu-nav-link').click();
+  // Verify the heading displays
+  cy.get("div[class='elementor-element elementor-element-ffb395c elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']").should("contain","INVEST IN LAUNDRY");
+  cy.visit('https://tumbledry.in/contact-us-franchisee/');
+  cy.get('.elementor-heading-title').should("be.visible");
+  //Enter name
+cy.get('body > div:nth-child(2) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(5) > div:nth-child(1) > input:nth-child(2)')
+.type("Test Test");
+//Enter phone
+cy.get('body > div:nth-child(2) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(5) > div:nth-child(2) > input:nth-child(2)')
+.type("6388788888");
+//Enter email
+cy.get('body > div:nth-child(2) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(5) > div:nth-child(3) > input:nth-child(2)')
+.type("test@test.com");
+//Ener pincode
+cy.get('body > div:nth-child(2) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(5) > div:nth-child(4) > input:nth-child(2)')
+.type("226777")
+//Click on join now button
+cy.get("div[class='elementor-element elementor-element-37bb60d elementor-button-align-end elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-form'] span[class='elementor-button-text']").click();
+// Verify successful message
+cy.get("h5[class='elementor-heading-title elementor-size-default']")
+.should("be.visible");
+cy.go(-1);
+cy.go(-1);
+cy.go(-1);
+  
 
-        // Franchise
-        // Click on "Get Franchise" menu item
-        cy.get('#menu-item-17 > .ekit-menu-nav-link').click({ force: true });
-        // cy.get('#menu-item-17 > .ekit-menu-nav-link').click();
-        // Verify the heading displays
-        cy.get("div[class='elementor-element elementor-element-ffb395c elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']").should("contain", "INVEST IN LAUNDRY");
-        cy.visit('https://tumbledry.in/contact-us-franchisee/');
-        cy.get('.elementor-heading-title').should("be.visible");
-        //Enter name
-        cy.get('.elementor-element-ee84f65 > .elementor-widget-container > .elementor-form > .elementor-form-fields-wrapper > .elementor-field-type-text > #form-field-name')
-            .type("Test Test");
-        //Enter phone
-        cy.get('#form-field-field_1')
-            .type("6388788888");
-        //Enter email
-        cy.get('.elementor-field-type-email > #form-field-email')
-            .type("test@test.com");
-        //Ener pincode
-        cy.get('#form-field-message')
-            .type("226777")
-        //Click on join now button
-        cy.get('.elementor-element-ee84f65 > .elementor-widget-container > .elementor-form > .elementor-form-fields-wrapper > .elementor-field-type-submit > .elementor-button > .elementor-button-content-wrapper > .elementor-button-text').click();
-        // Verify successful message
-        cy.get('.elementor-element-808b221 > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element > .elementor-widget-container > .elementor-heading-title')
-        .should("be.visible");
-        cy.go(-1);
-        cy.go(-1);
-        cy.go(-1);
 
+  // Blogs
+  // Click on "Blogs" menu item
+  cy.get('#menu-item-27683 > .ekit-menu-nav-link').click();
+  cy.get('#menu-item-27683 > .ekit-menu-nav-link').click();
+  // Verify Blog page opened & "Laundry" heading is available in the page
+  cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Laundry & Dry Clean"); 
 
-
-        // Blogs
-        // Click on "Blogs" menu item
-        cy.get('#menu-item-27683 > .ekit-menu-nav-link').click({force:true});
-        cy.get('#menu-item-27683 > .ekit-menu-nav-link').click({force:true});
-        // Verify Blog page opened & "Laundry" heading is available in the page
-        cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain", "Laundry & Dry Clean");
   
   // Verify blog listing displays
   cy.get("body > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > a:nth-child(1) > span:nth-child(1)")
