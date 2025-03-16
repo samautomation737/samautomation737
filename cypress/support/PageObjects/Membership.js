@@ -265,7 +265,7 @@ const headers = {
 
   cy.request({
     method: 'POST',
-    url: 'https://cambaytigerhapi.farziengineer.co/graphql/?source=website', // Replace with your actual endpoint
+    url: 'https://cambaytigerhapi.farziengineer.co/graphql/?source=website', 
     body: {
       query: expireMembershipQuery,
     },

@@ -316,7 +316,8 @@ describe('Booking flow', () => {
 
                   if (buttonText.includes("Add To Cart")) {
                     // "Add To Cart" button is available, proceed with clicking it
-                    cy.wrap($el).click({ force: true });     
+                    cy.wrap($el).click({ force: true });   
+
                     // Add wallet balance               
                     Home.addWalletBalance();
                     
@@ -408,6 +409,7 @@ describe('Booking flow', () => {
                             }
                           });
                         }
+
                         //verify amount in last checkout page
                         cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
                         .invoke('text')
@@ -419,6 +421,7 @@ describe('Booking flow', () => {
 
                           });
                         });
+                        
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
@@ -454,17 +457,17 @@ describe('Booking flow', () => {
     });
   })
   // Log all failed URLs after the test suite is complete
-  // after(() => {
-  //   if (failedUrls.length > 0) {
-  //     // Log failed URLs regardless of the test outcome
-  //     cy.task('log', "The following URLs failed:");
-  //     failedUrls.forEach(url => cy.task('log', url));
-  //     // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
-  //     cy.get("Some Urls contains 404 page", { timeout: 1000 });
-  //   } else {
-  //     cy.task('log', "All URLs passed successfully."); // Always log success
-  //   }
-  // });
+  after(() => {
+    if (failedUrls.length > 0) {
+      // Log failed URLs regardless of the test outcome
+      cy.task('log', "The following URLs failed:");
+      failedUrls.forEach(url => cy.task('log', url));
+      // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
+      cy.get("Some Urls contains 404 page", { timeout: 1000 });
+    } else {
+      cy.task('log', "All URLs passed successfully."); // Always log success
+    }
+  });
 
 
 })

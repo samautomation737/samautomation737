@@ -94,6 +94,48 @@ walletBalanceUpdate(
   });
   }
 
+  addWalletBalanceProd() {
+    // Define headers
+  const headers = {
+    Authorization: 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzUyMTQ5MTEsImV4cCI6MTczNTIxNTIxMSwidG9rZW4iOiIxUHVkcGZTenRoeTUiLCJlbWFpbCI6InNodWJoYW0uc0Bicmltby5pbiIsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2lkIjoiVlhObGNqbzVORGt3Tnc9PSIsImlzX3N0YWZmIjp0cnVlfQ._RfKNyR0uF8P2Xun4UCV1NSB3Z0-P_B1GUUgZC4YUT4',
+    'Content-Type': 'application/json',
+  };
+    const addWalletBalanceQuery = `
+  mutation {
+walletBalanceUpdate(
+  input: {
+    userId: "VXNlcjo5MjgzMA=="
+    secret: "TIGER"
+    amount: 50              
+    type: "ADD"                    
+    reason: "Bonus Cashback"
+    # expireInDays:"10"
+  }
+) {
+  wallet {
+    id
+    amount
+    expiryDate
+  }
+}
+}
+  `;
+  
+  cy.request({
+  method: 'POST',
+  url: 'https://cambaytigerhapi.farziengineer.co/graphql/?source=website', 
+  body: {
+    query: addWalletBalanceQuery,
+  },
+  headers,
+  }).then((response) => {
+  // Validate response status
+  expect(response.status).to.eq(200);
+  
+  
+  });
+  }
+
 }
 
 export default new Home();

@@ -18,9 +18,9 @@ describe('Booking flow', () => {
 
   it('Booking flow', () => {
     const locations = [
+      'Bangalore',
       'delhi airport',
-      'Mumbai',
-      'Bangalore'
+      'Mumbai'
     ];
 
 
@@ -108,6 +108,10 @@ describe('Booking flow', () => {
                   if (buttonText.includes("Add To Cart")) {
                     // "Add To Cart" button is available, proceed with clicking it
                     cy.wrap($el).click({ force: true });
+
+                    // Add wallet balance               
+                    Home.addWalletBalanceProd;
+
                     cy.contains("Cart").eq(0).click();
                     //cart heading text
                     cy.get(".overlayFarzicom__header__text").should('be.visible');
@@ -118,6 +122,44 @@ describe('Booking flow', () => {
                       if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
                         //product heading
         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+
+        // walllet balance usage
+        cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
+        .invoke("text")
+        .then((text) => {
+          let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
+          let updatedAmount = originalAmount - 50.00; // Subtract 50
+
+          cy.log("Original Amount: ", originalAmount);
+          cy.log("Updated Amount: ", updatedAmount);
+
+          // Store the updated amount for later use
+          cy.wrap(updatedAmount).as("updatedAmount");
+        });
+
+        // Use updatedAmount later in the test
+        cy.get("@updatedAmount").then((amount) => {
+        cy.log("Final Amount After Subtraction: ", amount);
+        });
+        // click on wallet checkbox
+        cy.get("div[class='cart-gg__cashback-login__wallet'] span").click({force:true});
+        cy.wait(5000);
+
+        //verify amount in cart
+        cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
+        .invoke('text')
+        .then((text) => {
+          const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+          cy.get("@updatedAmount").then((amount) => {
+            cy.log("Final Amount After Subtraction: ", amount);
+            expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+
+          });
+        });
+
+
+        cy.wait(5000);
+
         cy.contains("proceed to checkout").click();
         cy.get(".Address_button__text__ved_d").click();
         cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
@@ -128,6 +170,7 @@ describe('Booking flow', () => {
               
               // Check if the element exists and is visible
               if ($body.find("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").length > 0) {
+                cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2)").click();
                 cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
                   .should("be.visible")
                   .click();
@@ -157,6 +200,19 @@ describe('Booking flow', () => {
                             }
                           });
                         }
+
+                        //verify amount in last checkout page
+                        cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
+                        .invoke('text')
+                        .then((text) => {
+                          const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+                          cy.get("@updatedAmount").then((amount) => {
+                            cy.log("Final Amount After Subtraction: ", amount);
+                            expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+
+                          });
+                        });
+
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
