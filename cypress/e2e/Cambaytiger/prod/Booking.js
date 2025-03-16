@@ -110,7 +110,7 @@ describe('Booking flow', () => {
                     cy.wrap($el).click({ force: true });
 
                     // Add wallet balance               
-                    Home.addWalletBalanceProd;
+                    Home.addWalletBalanceProd();
 
                     cy.contains("Cart").eq(0).click();
                     //cart heading text
