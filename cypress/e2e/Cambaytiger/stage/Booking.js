@@ -226,9 +226,10 @@ describe('Booking flow', () => {
   it('Booking flow', () => {
     
     const locations = [
+      'Bangalore',
       'delhi airport',
-      'Mumbai',
-      'Bangalore'
+      'Mumbai'
+      
     ];
 
 
