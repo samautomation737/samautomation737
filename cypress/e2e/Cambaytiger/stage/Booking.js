@@ -335,7 +335,7 @@ describe('Booking flow', () => {
                           .invoke("text")
                           .then((text) => {
                             let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
-                            let updatedAmount = originalAmount - 50; // Subtract 50
+                            let updatedAmount = originalAmount - 50.00; // Subtract 50
 
                             cy.log("Original Amount: ", originalAmount);
                             cy.log("Updated Amount: ", updatedAmount);
@@ -359,7 +359,8 @@ describe('Booking flow', () => {
                             const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
                             cy.get("@updatedAmount").then((amount) => {
                               cy.log("Final Amount After Subtraction: ", amount);
-                              expect(displayedAmount).to.eq(amount.toString()); // Assertion
+                              expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+
                             });
                           });
 
