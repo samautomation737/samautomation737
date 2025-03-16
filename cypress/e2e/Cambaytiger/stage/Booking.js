@@ -379,6 +379,7 @@ describe('Booking flow', () => {
               
               // Check if the element exists and is visible
               if ($body.find("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").length > 0) {
+                cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2)").click();
                 cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
                   .should("be.visible")
                   .click();
