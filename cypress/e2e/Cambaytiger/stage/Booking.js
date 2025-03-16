@@ -227,8 +227,8 @@ describe('Booking flow', () => {
     
     const locations = [
       'delhi airport',
-      // 'Mumbai',
-      // 'Bangalore'
+      'Mumbai',
+      'Bangalore'
     ];
 
 
@@ -237,7 +237,7 @@ describe('Booking flow', () => {
       // 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
       'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
-      // 'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
+      'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
 
     ];
 
@@ -352,7 +352,7 @@ describe('Booking flow', () => {
                         cy.get("div[class='cart-gg__cashback-login__wallet'] span").click({force:true});
                         cy.wait(5000);
 
-                        //verify amount
+                        //verify amount in cart
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
                           .invoke('text')
                           .then((text) => {
@@ -363,6 +363,18 @@ describe('Booking flow', () => {
 
                             });
                           });
+
+                          //verify amount in last checkout page
+                        cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
+                        .invoke('text')
+                        .then((text) => {
+                          const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+                          cy.get("@updatedAmount").then((amount) => {
+                            cy.log("Final Amount After Subtraction: ", amount);
+                            expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+
+                          });
+                        });
 
 
                         cy.wait(5000);
