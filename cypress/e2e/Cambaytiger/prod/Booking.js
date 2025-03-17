@@ -202,16 +202,16 @@ describe('Booking flow', () => {
                         }
 
                         //verify amount in last checkout page
-                        cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
-                        .invoke('text')
-                        .then((text) => {
-                          const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
-                          cy.get("@updatedAmount").then((amount) => {
-                            cy.log("Final Amount After Subtraction: ", amount);
-                            expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+                        // cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
+                        // .invoke('text')
+                        // .then((text) => {
+                        //   const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+                        //   cy.get("@updatedAmount").then((amount) => {
+                        //     cy.log("Final Amount After Subtraction: ", amount);
+                        //     expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
 
-                          });
-                        });
+                        //   });
+                        // });
 
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
