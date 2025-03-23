@@ -98,7 +98,7 @@
 //             });
 
 //             cy.get('body').then((body) => {
-              
+
 //               const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
 //               cy.wait(10000);
 //               if (body.find(addToCartSelector).length > 0) {
@@ -125,22 +125,22 @@
 //         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").should("be.visible");
 //         function clickUntilVisible() {
 //             cy.get('body').then(($body) => {
-              
+
 //               // Check if the element exists and is visible
 //               if ($body.find("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").length > 0) {
 //                 cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
 //                   .should("be.visible")
 //                   .click();
-          
+
 //                 cy.wait(20000);
-          
+
 //                 cy.get(".Delivery_button__text__d8uUZ").click();
 //                 cy.wait(20000);
 //                 clickUntilVisible(); // Recursive call
 //               }
 //             });
 //           }
-                        
+
 //                         // Call the function in your test
 //                         clickUntilVisible();
 
@@ -224,12 +224,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Booking flow', () => {
 
   it('Booking flow', () => {
-    
+
     const locations = [
       'Bangalore',
       'delhi airport',
       'Mumbai'
-      
+
     ];
 
 
@@ -283,6 +283,7 @@ describe('Booking flow', () => {
                   cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
                   cy.log($elelocation)
                   selectLocationUntilNotMumbai();
+
                 }
               });
             });
@@ -307,7 +308,7 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              
+
               const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
@@ -316,11 +317,11 @@ describe('Booking flow', () => {
 
                   if (buttonText.includes("Add To Cart")) {
                     // "Add To Cart" button is available, proceed with clicking it
-                    cy.wrap($el).click({ force: true });   
+                    cy.wrap($el).click({ force: true });
 
                     // Add wallet balance               
                     Home.addWalletBalance();
-                    
+
                     cy.contains("Cart").eq(0).click();
                     //cart heading text
                     cy.get(".overlayFarzicom__header__text").should('be.visible');
@@ -329,6 +330,11 @@ describe('Booking flow', () => {
                     cy.get('body').then(($body) => {
                       //proceed to checkout button
                       if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
+
+                        // Increase the quantity
+                        cy.get(".index2_icon__RyVOB").click();
+                        cy.wait(5000);
+
                         //product heading
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
 
@@ -350,8 +356,8 @@ describe('Booking flow', () => {
                         cy.get("@updatedAmount").then((amount) => {
                           cy.log("Final Amount After Subtraction: ", amount);
                         });
-                         // click on wallet checkbox
-                        cy.get("div[class='cart-gg__cashback-login__wallet'] span").click({force:true});
+                        // click on wallet checkbox
+                        cy.get("div[class='cart-gg__cashback-login__wallet'] span").click({ force: true });
                         cy.wait(5000);
 
                         //verify amount in cart
@@ -366,35 +372,35 @@ describe('Booking flow', () => {
                             });
                           });
 
-                          
+
                         cy.wait(5000);
-                        
 
 
-        cy.contains("proceed to checkout").click();
-        cy.get(".Address_button__text__ved_d").click();
-        cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
-        cy.wait(20000);
-        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").should("be.visible");
-        function clickUntilVisible() {
-            cy.get('body').then(($body) => {
-              
-              // Check if the element exists and is visible
-              if ($body.find("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").length > 0) {
-                cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2)").click();
-                cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
-                  .should("be.visible")
-                  .click();
-          
-                cy.wait(20000);
-          
-                cy.get(".Delivery_button__text__d8uUZ").click();
-                cy.wait(20000);
-                clickUntilVisible(); // Recursive call
-              }
-            });
-          }
-                        
+
+                        cy.contains("proceed to checkout").click();
+                        cy.get(".Address_button__text__ved_d").click();
+                        cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
+                        cy.wait(20000);
+                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").should("be.visible");
+                        function clickUntilVisible() {
+                          cy.get('body').then(($body) => {
+
+                            // Check if the element exists and is visible
+                            if ($body.find("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").length > 0) {
+                              cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2)").click();
+                              cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
+                                .should("be.visible")
+                                .click();
+
+                              cy.wait(20000);
+
+                              cy.get(".Delivery_button__text__d8uUZ").click();
+                              cy.wait(20000);
+                              clickUntilVisible(); // Recursive call
+                            }
+                          });
+                        }
+
                         // Call the function in your test
                         clickUntilVisible();
 
@@ -412,16 +418,16 @@ describe('Booking flow', () => {
 
                         //verify amount in last checkout page
                         cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
-                        .invoke('text')
-                        .then((text) => {
-                          const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
-                          cy.get("@updatedAmount").then((amount) => {
-                            cy.log("Final Amount After Subtraction: ", amount);
-                            expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+                          .invoke('text')
+                          .then((text) => {
+                            const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+                            cy.get("@updatedAmount").then((amount) => {
+                              cy.log("Final Amount After Subtraction: ", amount);
+                              expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
 
+                            });
                           });
-                        });
-                        
+
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
