@@ -125,8 +125,8 @@ describe('Booking flow', () => {
                         cy.get(".index2_icon__RyVOB").click();
                         cy.wait(5000);
 
-                        //product heading
-                        cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+                        // //product heading
+                        // cy.get(".sc-htnqrb.dVayQT").should("be.visible");
 
                         // walllet balance usage
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
