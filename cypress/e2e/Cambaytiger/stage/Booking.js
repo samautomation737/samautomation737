@@ -343,6 +343,7 @@ describe('Booking flow', () => {
                           .invoke("text")
                           .then((text) => {
                             let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
+                            cy.wait(5000);
                             let updatedAmount = originalAmount - 50.00; // Subtract 50
 
                             cy.log("Original Amount: ", originalAmount);
