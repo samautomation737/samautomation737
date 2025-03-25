@@ -85,7 +85,7 @@ cy.go(-1);
       //Services
       // Click on  Laundry Service link
       cy.get("#menu-item-65644 > a").click({force:true});
-      cy.get("#menu-item-65644 > a").click({force:true});
+      // cy.get("#menu-item-65644 > a").click({force:true});
       // Verify the heading displays
       cy.get("div[class='elementor-element elementor-element-577ed00 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
       .should("contain", "Full Range Of Laundry Services");
