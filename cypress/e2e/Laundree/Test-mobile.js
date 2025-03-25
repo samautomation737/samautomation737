@@ -133,18 +133,18 @@ cy.go(-1);
 
       // Pricing
       // Click on Pricing menu item
-      cy.get('#menu-1-f8e9b53 > .menu-item-19 > .elementor-item').click();
+      cy.get('#menu-1-f8e9b53 > .menu-item-19 > .elementor-item').click({force:true});
       // Verify the "Pricing" heading displays
       cy.get(".elementor-element.elementor-element-a5da0bc.elementor-widget.elementor-widget-text-editor").should("contain", "Pricing");
 
       // Store Locator
       // Click on Store Locator menu item
-      cy.get('#menu-1-f8e9b53 > .menu-item-65653 > .elementor-item').click();
+      cy.get('#menu-1-f8e9b53 > .menu-item-65653 > .elementor-item').click({force:true});
       // Verify the heading displays
       cy.get(".sub-bannerhead.storelocator_heading").should("be.visible");
       // Click on the store
       cy.get('[href="https://tumbledry.in/store-locations/tumbledry-dry-clean-laundry-store-2nd-cross-street-karur/"] > h3')
-      .click();
+      .click({force:true});
       // Verify store details page
       cy.get('.col-md-7 > :nth-child(1) > .col-md-12 > .sub-bannerhead').should("be.visible");
       cy.go(-1);
@@ -152,7 +152,7 @@ cy.go(-1);
 
 // Franchise
 // Click on "Get Franchise" menu item
-cy.get('#menu-1-f8e9b53 > .menu-item-17 > .elementor-item').click();
+cy.get('#menu-1-f8e9b53 > .menu-item-17 > .elementor-item').click({force:true});
 
 // Verify the heading displays
 cy.get("div[class='elementor-element elementor-element-ffb395c elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']").should("contain","INVEST IN LAUNDRY");
@@ -172,7 +172,7 @@ cy.get('.elementor-element-e3f6cb1 > .elementor-widget-container > .elementor-fo
 .type("226777")
 //Click on join now button
 cy.get('.elementor-element-e3f6cb1 > .elementor-widget-container > .elementor-form > .elementor-form-fields-wrapper > .elementor-field-type-submit > .elementor-button > .elementor-button-content-wrapper > .elementor-button-text')
-.click();
+.click({force:true});
 // Verify successful message
 cy.get("h5[class='elementor-heading-title elementor-size-default']")
 .should("be.visible");
@@ -184,8 +184,7 @@ cy.go(-1);
 
 // Blogs
 // Click on "Blogs" menu item
-cy.get('#menu-1-f8e9b53 > .menu-item-27683 > .elementor-item').click();
-//   cy.get('#menu-item-27683 > .ekit-menu-nav-link').click();
+cy.get('#menu-1-f8e9b53 > .menu-item-27683 > .elementor-item').click({force:true});
 // Verify Blog page opened & "Laundry" heading is available in the page
 cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Laundry & Dry Clean"); 
 
