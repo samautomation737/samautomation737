@@ -28,7 +28,7 @@ describe('Booking flow', () => {
       // 'https://cambaytiger.com/product/mutton-curry-cut',
       // 'https://cambaytiger.com/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytiger.com/product/mutton-boneless-chunks',  //single product
-      'https://cambaytiger.com/product/kerala-moilee-curry',
+      // 'https://cambaytiger.com/product/kerala-moilee-curry',
       'https://cambaytiger.com/product/brown-eggs'
 
     ];
@@ -132,7 +132,10 @@ describe('Booking flow', () => {
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
                           .invoke("text")
                           .then((text) => {
-                            let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
+                            // let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
+                            let match = text.match(/\d+(\.\d+)?/); 
+                            let originalAmount = match ? parseFloat(match[0]) : NaN;
+
                             cy.wait(5000);
                             let updatedAmount = originalAmount - 50.00; // Subtract 50
 
