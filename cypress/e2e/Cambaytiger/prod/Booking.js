@@ -28,7 +28,7 @@ describe('Booking flow', () => {
       // 'https://cambaytiger.com/product/mutton-curry-cut',
       // 'https://cambaytiger.com/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytiger.com/product/mutton-boneless-chunks',  //single product
-      // 'https://cambaytiger.com/product/kerala-moilee-curry',
+      'https://cambaytiger.com/product/kerala-moilee-curry',
       'https://cambaytiger.com/product/brown-eggs'
 
     ];
