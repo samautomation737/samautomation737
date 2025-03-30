@@ -365,23 +365,23 @@ describe('Booking flow', () => {
 
                         //verify amount in cart
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
-  .invoke('text')
-  .then((text) => {
-    const numericValue = text.replace(/\D/g, ""); // Remove all non-digit characters
-    const adjustedValue = numericValue.length > 2 ? numericValue.slice(0, -2) : numericValue; // Remove last two decimal digits
-
-    cy.get("@updatedAmount").then((amount) => {
-      const expectedAmount = amount.toString().replace(/\D/g, ""); // Ensure we compare only digits
-
-      // Log values for debugging
-      cy.log("Displayed Amount (Extracted Digits):", numericValue);
-      cy.log("Displayed Amount (Adjusted):", adjustedValue);
-      cy.log("Expected Amount (Extracted Digits):", expectedAmount);
-
-      expect(adjustedValue).to.eq(expectedAmount); // Compare adjusted values
-    });
-  });
-
+                        .invoke('text')
+                        .then((text) => {
+                          const numericValue = text.replace(/[^0-9]/g, ""); // Remove all non-numeric characters
+                          const adjustedValue = Math.floor(parseFloat(numericValue) / 100).toString(); // Convert to number, divide by 100, then keep only the integer part
+                      
+                          cy.get("@updatedAmount").then((amount) => {
+                            const expectedAmount = Math.floor(parseFloat(amount)).toString(); // Ensure expected amount is also an integer
+                      
+                            // Log values for debugging
+                            cy.log("Displayed Amount (Extracted Digits):", numericValue);
+                            cy.log("Displayed Amount (Adjusted Integer Part):", adjustedValue);
+                            cy.log("Expected Amount (Integer Part):", expectedAmount);
+                      
+                            expect(adjustedValue).to.eq(expectedAmount); // Compare integer values only
+                          });
+                        });
+                      
 
 
 
