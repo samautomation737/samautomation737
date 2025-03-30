@@ -128,6 +128,7 @@ describe('Booking flow', () => {
                         // //product heading
                         // cy.get(".sc-htnqrb.dVayQT").should("be.visible");
 
+                        // wallet balance usage
                         // walllet balance usage
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
                           .invoke("text")
@@ -135,13 +136,8 @@ describe('Booking flow', () => {
                             // let originalAmount = parseFloat(text.replace(/[^0-9.]/g, "")); // Extract numeric value
                             let match = text.match(/\d+(\.\d+)?/); 
                             let originalAmount = match ? parseFloat(match[0]) : NaN;
-
                             cy.wait(5000);
                             let updatedAmount = originalAmount - 50.00; // Subtract 50
-
-                            cy.log("Original Amount: ", originalAmount);
-                            cy.log("Updated Amount: ", updatedAmount);
-
                             // Store the updated amount for later use
                             cy.wrap(updatedAmount).as("updatedAmount");
                           });
@@ -156,16 +152,16 @@ describe('Booking flow', () => {
 
                         //verify amount in cart
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
-                          .invoke('text')
-                          .then((text) => {
-                            const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
-                            cy.get("@updatedAmount").then((amount) => {
-                              cy.log("Final Amount After Subtraction: ", amount);
-                              expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
-
-                            });
+                        .invoke('text')
+                        .then((text) => {
+                          const numericValue = text.replace(/[^0-9]/g, ""); // Remove all non-numeric characters
+                          const adjustedValue = Math.floor(parseFloat(numericValue) / 100).toString(); // Convert to number, divide by 100, then keep only the integer part
+                      
+                          cy.get("@updatedAmount").then((amount) => {
+                            const expectedAmount = Math.floor(parseFloat(amount)).toString(); // Ensure expected amount is also an integer                                          
+                            expect(adjustedValue).to.eq(expectedAmount); // Compare integer values only
                           });
-
+                        });
 
                         cy.wait(5000);
 

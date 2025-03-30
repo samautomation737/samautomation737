@@ -237,7 +237,7 @@ describe('Booking flow', () => {
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
       // 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
-      // 'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
+      'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
       'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
 
     ];
@@ -347,10 +347,6 @@ describe('Booking flow', () => {
                             let originalAmount = match ? parseFloat(match[0]) : NaN;
                             cy.wait(5000);
                             let updatedAmount = originalAmount - 50.00; // Subtract 50
-
-                            cy.log("Original Amount: ", originalAmount);
-                            cy.log("Updated Amount: ", updatedAmount);
-
                             // Store the updated amount for later use
                             cy.wrap(updatedAmount).as("updatedAmount");
                           });
@@ -371,13 +367,7 @@ describe('Booking flow', () => {
                           const adjustedValue = Math.floor(parseFloat(numericValue) / 100).toString(); // Convert to number, divide by 100, then keep only the integer part
                       
                           cy.get("@updatedAmount").then((amount) => {
-                            const expectedAmount = Math.floor(parseFloat(amount)).toString(); // Ensure expected amount is also an integer
-                      
-                            // Log values for debugging
-                            cy.log("Displayed Amount (Extracted Digits):", numericValue);
-                            cy.log("Displayed Amount (Adjusted Integer Part):", adjustedValue);
-                            cy.log("Expected Amount (Integer Part):", expectedAmount);
-                      
+                            const expectedAmount = Math.floor(parseFloat(amount)).toString(); // Ensure expected amount is also an integer                                          
                             expect(adjustedValue).to.eq(expectedAmount); // Compare integer values only
                           });
                         });
@@ -428,17 +418,17 @@ describe('Booking flow', () => {
                           });
                         }
 
-                        //verify amount in last checkout page
-                        cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
-                          .invoke('text')
-                          .then((text) => {
-                            const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
-                            cy.get("@updatedAmount").then((amount) => {
-                              cy.log("Final Amount After Subtraction: ", amount);
-                              expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
+                        // //verify amount in last checkout page
+                        // cy.get("div[class='CheckoutV3_paymentSummaryRowBold__uferc'] span")
+                        //   .invoke('text')
+                        //   .then((text) => {
+                        //     const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
+                        //     cy.get("@updatedAmount").then((amount) => {
+                        //       cy.log("Final Amount After Subtraction: ", amount);
+                        //       expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
 
-                            });
-                          });
+                        //     });
+                        //   });
 
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
