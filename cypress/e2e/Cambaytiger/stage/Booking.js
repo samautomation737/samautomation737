@@ -365,15 +365,23 @@ describe('Booking flow', () => {
 
                         //verify amount in cart
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
-                        .invoke('text')
-                        .then((text) => {
-                          const displayedAmount = text.replace(/\D/g, ""); // Remove all non-digit characters
-                          cy.get("@updatedAmount").then((amount) => {
-                            const expectedAmount = amount.toString().replace(/\D/g, ""); // Remove decimals if any
-                            cy.log("Final Amount After Subtraction: ", expectedAmount);
-                            expect(displayedAmount).to.eq(expectedAmount); // Compare digits only
-                          });
-                        });
+  .invoke('text')
+  .then((text) => {
+    const numericValue = text.replace(/\D/g, ""); // Remove all non-digit characters
+    const adjustedValue = numericValue.length > 2 ? numericValue.slice(0, -2) : numericValue; // Remove last two decimal digits
+
+    cy.get("@updatedAmount").then((amount) => {
+      const expectedAmount = amount.toString().replace(/\D/g, ""); // Ensure we compare only digits
+
+      // Log values for debugging
+      cy.log("Displayed Amount (Extracted Digits):", numericValue);
+      cy.log("Displayed Amount (Adjusted):", adjustedValue);
+      cy.log("Expected Amount (Extracted Digits):", expectedAmount);
+
+      expect(adjustedValue).to.eq(expectedAmount); // Compare adjusted values
+    });
+  });
+
 
 
 
