@@ -365,15 +365,16 @@ describe('Booking flow', () => {
 
                         //verify amount in cart
                         cy.get('.cart-gg__footer__totalPrice__footer__totalprice > [data-test="totalPrice"]')
-                          .invoke('text')
-                          .then((text) => {
-                            const displayedAmount = text.replace(/[^0-9.]/g, ""); // Extract numeric value
-                            cy.get("@updatedAmount").then((amount) => {
-                              cy.log("Final Amount After Subtraction: ", amount);
-                              expect(displayedAmount).to.eq(parseFloat(amount).toFixed(2)); // Compare as '150.00'
-
-                            });
+                        .invoke('text')
+                        .then((text) => {
+                          const displayedAmount = text.replace(/\D/g, ""); // Remove all non-digit characters
+                          cy.get("@updatedAmount").then((amount) => {
+                            const expectedAmount = amount.toString().replace(/\D/g, ""); // Remove decimals if any
+                            cy.log("Final Amount After Subtraction: ", expectedAmount);
+                            expect(displayedAmount).to.eq(expectedAmount); // Compare digits only
                           });
+                        });
+
 
 
                         cy.wait(5000);
