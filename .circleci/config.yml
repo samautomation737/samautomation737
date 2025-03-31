@@ -31,13 +31,13 @@ jobs:
             if [ "<< parameters.environment >>" = "stage" ]; then 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js"
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
               
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Search.js"
               # npx cypress run --spec "cypress/e2e/Laundree/Store_Details/Test 17.js" 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
 
             else
               
@@ -45,7 +45,7 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
               npx cypress run --spec "cypress/e2e/Laundree/*.js" 
 
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"                
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"                
 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/url/Products/*.js"
