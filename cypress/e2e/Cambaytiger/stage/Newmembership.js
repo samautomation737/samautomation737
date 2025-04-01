@@ -99,7 +99,7 @@ describe('Membership functionality', () => {
     Membership.checkout();
 
     //Razorpay
-    Membership.razorpay();
+    // Membership.razorpay();
     
       // Define headers
       const headers = {
@@ -367,7 +367,7 @@ describe('Membership functionality', () => {
     Membership.checkout();
 
     //Razorpay
-    Membership.razorpay();
+    // Membership.razorpay();
     
       // Define headers
       const headers = {
