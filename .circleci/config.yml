@@ -18,7 +18,7 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
-    resource_class: xlarge  # Allocate more resources for long-running tests    
+    resource_class: medium  # Allocate more resources for long-running tests    
     steps:
       - checkout
       - run:
@@ -29,9 +29,9 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then 
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js"
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
               
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js"
               # npx cypress run --spec "cypress/e2e/Laundree/Store_Details/Test 17.js" 
@@ -44,8 +44,8 @@ jobs:
 
             else
               
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
 
 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
