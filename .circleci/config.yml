@@ -36,20 +36,20 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js"
               # npx cypress run --spec "cypress/e2e/Laundree/Store_Details/Test 17.js" 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
 
             else
               
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/Products/*.js" 
 
 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"                
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"                
 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/farzi/url/Products/*.js"
