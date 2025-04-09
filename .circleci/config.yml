@@ -18,7 +18,7 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
-    resource_class: medium  # Allocate more resources for long-running tests    
+    resource_class: large  # Allocate more resources for long-running tests    
     steps:
       - checkout
       - run:
