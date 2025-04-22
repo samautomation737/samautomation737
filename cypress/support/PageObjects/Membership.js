@@ -151,7 +151,7 @@ class Membership {
     }
 
     orderPlace() {
-        cy.visit("https://cambaytigerstage-nh.farziengineer.co/product/red-thai-curry");
+        cy.visit("https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry/kerala-moilee-curry");
         cy.get("#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button > span > div.undefined__mainText.sc-gzOgki.fSlvAH").click();
         cy.contains("Cart").eq(0).click();
 
