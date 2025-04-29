@@ -310,7 +310,14 @@ const headers = {
             .should("be.visible")
             .click({ force: true });
         // Get the current URL
-        cy.wait(15000);
+        cy.wait(30000);
+                        // Verify the URL
+                        cy.url().then((currentUrl) => {
+                          expect([
+                            'https://cambaytiger.com/',
+                            'https://cambaytiger.com/order-placed',
+                          ]).to.include(currentUrl);
+                        });
 
     }
 }
