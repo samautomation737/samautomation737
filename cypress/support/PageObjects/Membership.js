@@ -316,6 +316,8 @@ const headers = {
                           expect([
                             'https://cambaytiger.com/',
                             'https://cambaytiger.com/order-placed',
+                            'https://cambaytigerstage-nh.farziengineer.co/',
+                            'https://cambaytigerstage-nh.farziengineer.co/order-placed',
                           ]).to.include(currentUrl);
                         });
 
