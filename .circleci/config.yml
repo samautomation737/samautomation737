@@ -29,11 +29,11 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then 
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/Products/*.js,cypress/e2e/Cambaytiger/stage/url/Products variant/*.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/Products/*.js,cypress/e2e/Cambaytiger/stage/url/Products variant/*.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
               
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js"
               # npx cypress run --spec "cypress/e2e/Laundree/Store_Details/Test 17.js" 
               # npx cypress run --spec "cypress/e2e/Laundree/*.js" 
