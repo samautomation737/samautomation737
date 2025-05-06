@@ -157,6 +157,7 @@ class Membership {
 
         //product heading
         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+        cy.wait(10000);
         cy.contains("proceed to checkout").click();
         cy.get(".Address_button__text__ved_d").click();
         cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
@@ -193,6 +194,7 @@ class Membership {
 
       //product heading
       cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+      cy.wait(10000);
       cy.contains("proceed to checkout").click();
       cy.get(".Address_button__text__ved_d").click();
       cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
