@@ -44,6 +44,7 @@ describe('Booking flow', () => {
 
     //  Login
     Home.login();
+    Home.removeWalletBalanceStage();
 
 
     locations.forEach((location) => {
@@ -113,7 +114,7 @@ describe('Booking flow', () => {
                     cy.wrap($el).click({ force: true });
 
                     // Add wallet balance               
-                    Home.addWalletBalance();
+                    Home.addWalletBalanceStage();
 
                     cy.contains("Cart").eq(0).click();
                     //cart heading text

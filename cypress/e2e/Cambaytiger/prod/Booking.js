@@ -42,6 +42,7 @@ describe('Booking flow', () => {
 
     //  Login
     Home.login();
+    Home.removeWalletBalanceProd();
 
 
     locations.forEach((location) => {
