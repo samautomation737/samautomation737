@@ -20,24 +20,30 @@ class Membership {
     }
 
     closeAdvPopup() {
-        cy.wait(20000);
-        // cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
-        //     // Access the contents of the iframe's body
-        //     iframedata.contents().find('body');
-        // });
+        cy.wait(10000);
         function waitForElementAndClosePopup() {
-            cy.get('body').then((body) => {
-                if (body.find("#wzrkImageOnlyDiv").length > 0) {
-                    // Element exists; access the iframe
-                    cy.reload();
-                    waitForElementAndClosePopup(); // Recursive call
-                    
-                }
-            });
-        }
-        // cy.reload();
-        // // Call the function in your test
+        cy.get('body').then((body) => {
+          if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
+            // Wait for iframe to load
+            cy.wait(1000); // Adjust if needed for iframe render
+
+            // Access the iframe
+            cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+            const iframeBody = $iframe.contents().find('body');
+            cy.wrap(iframeBody)
+              .find('#we_wk_navigation-id-775ebc9b-eb91-4023-a659-d03207deb0fb')
+              .invoke('removeAttr', 'target')
+              .click({ force: true });
+          });
+
+              }
+        });
+}
+
+        
         waitForElementAndClosePopup();
+        // close the pop up
+        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
     }
 
 
