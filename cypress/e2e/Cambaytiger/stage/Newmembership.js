@@ -24,6 +24,7 @@ describe('Membership functionality', () => {
 
   it('Bronze Membership functionality', () => {
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
+    Membership.removeMembership();
     
     // Select location 
     Home.selectPrimaryLocation();
@@ -163,6 +164,7 @@ describe('Membership functionality', () => {
 
   it('Gold Membership functionality', () => {
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
+    Membership.removeMembership();
     
     // Select location 
     Home.selectPrimaryLocation();
@@ -297,6 +299,8 @@ describe('Membership functionality', () => {
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
+
+    Membership.removeMembership();
     
     // Select location 
     Home.selectPrimaryLocation();
