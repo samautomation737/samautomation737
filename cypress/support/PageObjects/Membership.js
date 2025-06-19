@@ -35,15 +35,16 @@ class Membership {
               .invoke('removeAttr', 'target')
               .click({ force: true });
           });
-
+          cy.wait(5000);
+        // close the pop up
+        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
               }
         });
 }
 
         
         waitForElementAndClosePopup();
-        // close the pop up
-        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
+        
     }
 
 
