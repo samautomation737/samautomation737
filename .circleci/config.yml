@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
-          no_output_timeout: 180m  # Ensures the step doesn’t timeout due to inactivity
+          no_output_timeout: 5m  # Ensures the step doesn’t timeout due to inactivity
       - run:  
           name: Run Cypress Tests
           command: |
