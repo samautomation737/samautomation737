@@ -35,7 +35,7 @@ describe('Booking flow', () => {
 
     cy.visit('https://cambaytiger.com/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
-Membership.closeWedAdvPopup();
+    Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // Select location 

@@ -26,7 +26,7 @@ describe('Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
     Membership.removeMembershipProd();
 
-Membership.closeWedAdvPopup();
+    Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
     
     // Select location 
