@@ -13,6 +13,7 @@ describe('Search functionality', () => {
   it('Search functionality', () => {
     cy.visit('https://cambaytiger.com/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
+    Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // select location 

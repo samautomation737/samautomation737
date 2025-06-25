@@ -22,6 +22,7 @@ describe('Membership functionality', () => {
 
   it('Bronze Membership functionality', () => {
     cy.visit('https://farzistore-nh.farziengineer.co/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // Select location 
@@ -105,6 +106,7 @@ describe('Membership functionality', () => {
   
   it('Gold Membership functionality', () => {
     cy.visit('https://farzistore-nh.farziengineer.co/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // Select location 
@@ -185,6 +187,7 @@ describe('Membership functionality', () => {
 
   it('Silver Membership functionality', () => {
     cy.visit('https://farzistore-nh.farziengineer.co/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
         // Select location 

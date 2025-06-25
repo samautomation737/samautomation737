@@ -19,7 +19,28 @@ class Membership {
         cy.visit("https://cambaytiger.com/page/membership");
     }
 
-    closeAdvPopup() {
+      closeWedAdvPopup() {
+        cy.wait(10000);
+        
+          cy.get('body').then((body) => {
+          if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
+            // Wait for iframe to load
+            cy.wait(1000); // Adjust if needed for iframe render
+
+            // Access the iframe
+            cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+            const iframeBody = $iframe.contents().find('body');
+            cy.wrap(iframeBody)
+              .find('#we_wk_navigation-id-9781ff41-8184-490b-9861-985f01776c50')
+              .invoke('removeAttr', 'target')
+              .click({ force: true });
+          });
+
+              }
+        });
+
+  }
+  closeAdvPopup() {
         cy.wait(10000);
         function waitForElementAndClosePopup() {
         cy.get('body').then((body) => {
@@ -35,16 +56,15 @@ class Membership {
               .invoke('removeAttr', 'target')
               .click({ force: true });
           });
-          cy.wait(5000);
-        // close the pop up
-        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
+
               }
         });
 }
 
         
         waitForElementAndClosePopup();
-        
+        // close the pop up
+        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
     }
 
 

@@ -46,6 +46,7 @@ describe('Template Spec', () => {
     ];
 
     cy.visit('https://cambaytiger.com/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // // select location 

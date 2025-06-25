@@ -35,6 +35,7 @@ describe('Booking flow', () => {
 
     cy.visit('https://farzistore-nh.farziengineer.co/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
 
     // Select location 

@@ -26,6 +26,7 @@ describe('Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
     Membership.removeMembershipProd();
 
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
     
     // Select location 
@@ -166,6 +167,7 @@ describe('Membership functionality', () => {
 
   it('Gold Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
     Membership.removeMembershipProd();
     
@@ -301,6 +303,7 @@ describe('Membership functionality', () => {
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
+Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
     Membership.removeMembershipProd();
     
