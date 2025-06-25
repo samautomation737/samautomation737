@@ -64,6 +64,7 @@ class Membership {
 
     waitForElementAndClosePopup();
     // close the pop up
+    cy.wait(5000);
     cy.get('body').then((body) => {
       if (body.find("div[class='scss_closeIcon__djTCa'] svg").length > 0) {
         cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
