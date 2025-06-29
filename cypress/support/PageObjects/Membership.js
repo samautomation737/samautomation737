@@ -21,23 +21,24 @@ class Membership {
 
   closeWedAdvPopup() {
     cy.wait(15000);
-
     cy.get('body').then((body) => {
-      if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
-        // Wait for iframe to load
-        cy.wait(1000); // Adjust if needed for iframe render
+    if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
+      cy.wait(1000); // Wait for iframe to load
 
-        // Access the iframe
-        cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-          const iframeBody = $iframe.contents().find('body');
-          cy.wrap(iframeBody)
-            .find('#we_wk_navigation-id-9781ff41-8184-490b-9861-985f01776c50')
+      cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+        const iframeBody = $iframe.contents().find('body');
+        const targetButton = iframeBody.find('#we_wk_navigation-id-9781ff41-8184-490b-9861-985f01776c50');
+
+        if (targetButton.length > 0) {
+          cy.wrap(targetButton)
             .invoke('removeAttr', 'target')
             .click({ force: true });
-        });
-
-      }
-    });
+        } else {
+          cy.log('Target button not found inside iframe.');
+        }
+      });
+    }
+  });
 
   }
   closeAdvPopup() {
