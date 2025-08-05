@@ -53,7 +53,7 @@ class Membership {
           cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
             const iframeBody = $iframe.contents().find('body');
             cy.wrap(iframeBody)
-              .find('#we_wk_navigation-id-775ebc9b-eb91-4023-a659-d03207deb0fb')
+              .find('#we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3')
               .invoke('removeAttr', 'target')
               .click({ force: true });
           });
