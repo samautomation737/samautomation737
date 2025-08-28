@@ -27,7 +27,7 @@ class Home {
     cy.get('body').then(($body) => {
       const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
       const cartHeaderSelector = ".overlayFarzicom__header__text";
-      const deleteButtonSelector = ".sc-fsGQkc.bgexUZ";
+      const deleteButtonSelector = ".sc-jxgvnK.dYIHMe";
 
       if (
         $body.find(cartQuantitySelector).is(':visible') &&
