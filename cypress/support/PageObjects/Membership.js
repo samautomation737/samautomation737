@@ -186,7 +186,7 @@ class Membership {
 
   orderPlace() {
     cy.visit("https://cambaytigerstage-nh.farziengineer.co/product/red-thai-curry");
-    cy.get("#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button > span > div.undefined__mainText.sc-gzOgki.fSlvAH").click();
+    cy.get("div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-hzDEsm DxnLM'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-iCwjlJ isDHAo'] div[class='sc-fkyLDJ hTKHCQ'] section[class='sc-bbkauy bVlfoz'] div[class='add-to-cart-btn sc-iIHSe gaUIrK'] div p[class='font-weight:900; font-size:20px']").click();
     cy.contains("Cart").eq(0).click();
 
     //product heading
