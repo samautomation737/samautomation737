@@ -33,8 +33,8 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
               
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js"
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js"
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js"
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Newmembership.js"
               # npx cypress run --spec "cypress/e2e/Laundree/Store_Details/Test 17.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js,cypress/e2e/Cambaytiger/stage/url/Products variant/*.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js,cypress/e2e/Cambaytiger/prod/url/Products/*.js"
