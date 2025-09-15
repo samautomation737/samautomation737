@@ -88,7 +88,7 @@ describe('Booking flow', () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.wait(5000);
             //Clear Cart
-            Home.cartClear();
+            Home.cartClearStage();
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
               const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";

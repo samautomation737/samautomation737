@@ -38,7 +38,7 @@ describe('Membership functionality', () => {
 
     
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     //Select Bronze
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
@@ -143,7 +143,7 @@ describe('Membership functionality', () => {
     cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 1 month ");
 
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     //Order Place
     Membership.orderPlace();
@@ -177,7 +177,7 @@ describe('Membership functionality', () => {
 
     
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     //Select Gold
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(5) span:nth-child(2)").click();
@@ -282,7 +282,7 @@ describe('Membership functionality', () => {
     cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 6 month ");
 
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     //Order Place
     Membership.orderPlace();
@@ -313,7 +313,7 @@ describe('Membership functionality', () => {
 
     
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     
     Cypress._.forEach(location1, (location) => {
@@ -414,7 +414,7 @@ describe('Membership functionality', () => {
     cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 3 month ");
 
     //Clear Cart
-    Home.cartClear();
+    Home.cartClearStage();
 
     //Order Place
     Membership.orderPlace();
