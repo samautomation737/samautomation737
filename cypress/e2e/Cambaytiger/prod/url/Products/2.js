@@ -41,7 +41,6 @@ describe('Template Spec', () => {
 'https://cambaytiger.com/product/OMG-Meal/omg-meal',
 'https://cambaytiger.com/product/BBQ-Grill-Box/bbq-grill-box',
 'https://cambaytiger.com/product/Grill-Thrill-Pack/grill-thrill-pack',
-'https://cambaytiger.com/product/Snack-Attack-Platter/snack-attack-platter',
 'https://cambaytiger.com/product/chicken-italian-garlic-sausage/chicken-italian-garlic-sausage',
 'https://cambaytiger.com/product/chicken-bacon/chicken-bacon',
 'https://cambaytiger.com/product/chicken-cheese-and-paprika-sausage/chicken-cheese-paprika-sausage',

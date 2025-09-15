@@ -30,8 +30,8 @@ describe('Booking flow', () => {
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
       // 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
-      'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
-      'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
+      'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry/kerala-moilee-curry',
+      'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs/brown-eggs-pack-of-6-pcs'
 
     ];
 

@@ -23,7 +23,7 @@ describe('Template Spec', () => {
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-lrg-prawns-combo',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',
 'https://cambaytiger.com/product/classic-makhani-curry/classic-makhani-curry',
-'https://cambaytigerstage-nh.farziengineer.co/product/red-thai-curry',
+'https://cambaytigerstage-nh.farziengineer.co/product/red-thai-curry/red-thai-curry',
 'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
 'https://cambaytigerstage-nh.farziengineer.co/product/chingri-malai-curry',
 'https://cambaytigerstage-nh.farziengineer.co/product/kawan-tawa-paratha',
