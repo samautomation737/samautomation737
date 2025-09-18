@@ -103,7 +103,7 @@ describe('Booking flow', () => {
 
             cy.get('body').then((body) => {
 
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='showOnDesktop'] div[class='add-to-cart-btn sc-iIHSe gaUIrK'] div div:nth-child(1) svg path";
+              const addToCartSelector = "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > section:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
