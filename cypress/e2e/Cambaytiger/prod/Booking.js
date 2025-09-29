@@ -168,6 +168,7 @@ describe('Booking flow', () => {
                         cy.wait(5000);
 
                         cy.contains("proceed to checkout").click();
+                        cy.wait(5000);
                         cy.get(".Address_button__text__ved_d").click();
                         cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)").should("be.visible");
                         cy.wait(20000);
