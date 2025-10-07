@@ -237,6 +237,7 @@ describe('Booking flow', () => {
                             'https://cambaytigerstage-nh.farziengineer.co/order-placed',
                           ]).to.include(currentUrl);
                         });
+                        cy.get(".scss_closeIcon__djTCa").click();
 
 
                       } else {
