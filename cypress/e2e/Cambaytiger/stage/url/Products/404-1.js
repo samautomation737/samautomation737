@@ -17,6 +17,8 @@ describe('Template Spec', () => {
       const product_urls = data.urls;
 
       cy.visit('https://cambaytiger.com');
+      Membership.closeWedAdvPopup();
+      Membership.closeAdvPopup();
       cy.wait(10000);
 
       // select location 
