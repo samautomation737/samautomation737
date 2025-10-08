@@ -16,7 +16,7 @@ describe('Template Spec', () => {
     cy.fixture('product_urls').then((data) => {
       const product_urls = data.urls;
 
-      cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
+      cy.visit('https://cambaytiger.com');
       cy.wait(10000);
 
       // select location 
