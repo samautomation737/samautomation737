@@ -27,7 +27,7 @@ class Membership {
 
       cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
         const iframeBody = $iframe.contents().find('body');
-        const targetButton = iframeBody.find('#we_wk_navigation-id-9781ff41-8184-490b-9861-985f01776c50');
+        const targetButton = iframeBody.find('we_wk_navigation-id-368c3126-0a26-4215-89bf-14f859f9d0fb');
 
         if (targetButton.length > 0) {
           cy.wrap(targetButton)
