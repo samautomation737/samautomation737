@@ -30,11 +30,11 @@ describe('Template Spec', () => {
       cy.wait(10000);
 
       // Loop through each product URL and test
-      // product_urls.slice(0, 1).forEach((product_url) => {
-      // cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
+      product_urls.slice(0, 50).forEach((product_url) => {
+      cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
 
-        product_urls.forEach((product_url) => {
-        cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
+        // product_urls.forEach((product_url) => {
+        // cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
 
         cy.get('body').then((body) => {
           const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";

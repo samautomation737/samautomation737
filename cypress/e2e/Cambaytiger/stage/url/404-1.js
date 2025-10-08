@@ -1,5 +1,4 @@
 let failedUrls = []; // Array to track failed URLs
-import Membership from '../../../../../support/PageObjects/Membership';
 
 Cypress.on('fail', (error, runnable) => {
   cy.task('log', `Test failed: ${runnable.title}`);
@@ -17,9 +16,7 @@ describe('Template Spec', () => {
     cy.fixture('product_urls').then((data) => {
       const product_urls = data.urls;
 
-      cy.visit('https://cambaytiger.com');
-      Membership.closeWedAdvPopup();
-      Membership.closeAdvPopup();
+      cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
       cy.wait(10000);
 
       // select location 
@@ -30,11 +27,11 @@ describe('Template Spec', () => {
       cy.wait(10000);
 
       // Loop through each product URL and test
-      // product_urls.slice(0, 1).forEach((product_url) => {
-      // cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
+      product_urls.slice(0, 50).forEach((product_url) => {
+      cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
 
-        product_urls.forEach((product_url) => {
-        cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
+        // product_urls.forEach((product_url) => {
+        // cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
 
         cy.get('body').then((body) => {
           const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";
