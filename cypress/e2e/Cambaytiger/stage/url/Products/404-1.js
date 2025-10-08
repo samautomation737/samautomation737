@@ -1,4 +1,5 @@
 let failedUrls = []; // Array to track failed URLs
+import Membership from '../../../../../support/PageObjects/Membership';
 
 Cypress.on('fail', (error, runnable) => {
   cy.task('log', `Test failed: ${runnable.title}`);
