@@ -29,7 +29,7 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then 
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/*.js" 
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/*.js" 
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js"  
               
@@ -43,7 +43,7 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Search.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
               # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/*.js" 
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/404-1.js" 
+              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/404-1.js" 
 
             else              
               npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js,cypress/e2e/Cambaytiger/prod/url/*.js"
