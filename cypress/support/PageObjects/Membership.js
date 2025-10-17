@@ -86,7 +86,7 @@ class Membership {
           cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
             const iframeBody = $iframe.contents().find('body');
             cy.wrap(iframeBody)
-              .find('#we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3')
+              .find('#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5')
               .invoke('removeAttr', 'target')
               .click({ force: true });
           });
@@ -94,7 +94,15 @@ class Membership {
         }
       });
     }
+waitForElementAndClosePopup();
+    // close the pop up
+    cy.wait(5000);
+    cy.get('body').then((body) => {
+      if (body.find("div[class='scss_closeIcon__djTCa'] svg").length > 0) {
+        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
 
+      }
+    });
   }
 
 
