@@ -19,27 +19,27 @@ class Membership {
     cy.visit("https://cambaytiger.com/page/membership");
   }
 
-closeThuAdvPopup() {
-    cy.wait(15000);
-    cy.get('body').then((body) => {
-    if (body.find("#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5").length > 0) {
-      cy.wait(1000); // Wait for iframe to load
+// closeThuAdvPopup() {
+//     cy.wait(15000);
+//     cy.get('body').then((body) => {
+//     if (body.find("#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5").length > 0) {
+//       cy.wait(1000); // Wait for iframe to load
 
-      cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-        const iframeBody = $iframe.contents().find('body');
-        const targetButton = iframeBody.find('#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5');
+//       cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+//         const iframeBody = $iframe.contents().find('body');
+//         const targetButton = iframeBody.find('#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5');
 
-        if (targetButton.length > 0) {
-          cy.wrap(targetButton)
-            .invoke('removeAttr', 'target')
-            .click({ force: true });
-        } else {
-          cy.log('Target button not found inside iframe.');
-        }
-      });
-    }
-  });
-}
+//         if (targetButton.length > 0) {
+//           cy.wrap(targetButton)
+//             .invoke('removeAttr', 'target')
+//             .click({ force: true });
+//         } else {
+//           cy.log('Target button not found inside iframe.');
+//         }
+//       });
+//     }
+//   });
+// }
   closeWedAdvPopup() {
     cy.wait(15000);
     cy.get('body').then((body) => {
@@ -74,7 +74,7 @@ closeThuAdvPopup() {
           cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
             const iframeBody = $iframe.contents().find('body');
             cy.wrap(iframeBody)
-              .find('#we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3')
+              .find('#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5')
               .invoke('removeAttr', 'target')
               .click({ force: true });
           });
