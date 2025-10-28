@@ -303,8 +303,6 @@ Membership.closeWedAdvPopup();
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    Membership.closeThAdvPopup();
-    Membership.closeWedAdvPopup();
     Membership.closeAdvPopup();
     Membership.removeMembershipProd();
     
