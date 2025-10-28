@@ -19,91 +19,76 @@ class Membership {
     cy.visit("https://cambaytiger.com/page/membership");
   }
 
-  closeWedAdvPopup() {
-    cy.wait(15000);
+ closeAdvPopup(popupType) {
+  const popupConfig = {
+    wed: 'we_wk_navigation-id-368c3126-0a26-4215-89bf-14f859f9d0fb',
+    adv: 'we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3',
+    th: 'we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5'
+  };
+
+  const buttonId = popupConfig[popupType];
+  const maxRetries = 10; // number of attempts before giving up
+  const retryDelay = 1000; // 1s between retries
+
+  function checkAndClosePopup(attempt = 0) {
     cy.get('body').then((body) => {
-    if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
-      cy.wait(1000); // Wait for iframe to load
+      const iframe = body.find('#webklipper-publisher-widget-container-notification-frame');
 
-      cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-        const iframeBody = $iframe.contents().find('body');
-        const targetButton = iframeBody.find('#we_wk_navigation-id-368c3126-0a26-4215-89bf-14f859f9d0fb');
+      if (iframe.length > 0) {
+        cy.log(`✅ Iframe found for ${popupType.toUpperCase()} popup, closing now...`);
+        cy.wait(1000);
 
-        if (targetButton.length > 0) {
-          cy.wrap(targetButton)
-            .invoke('removeAttr', 'target')
-            .click({ force: true });
-        } else {
-          cy.log('Target button not found inside iframe.');
-        }
-      });
+        cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+          const iframeBody = $iframe.contents().find('body');
+          const button = iframeBody.find(`#${buttonId}`);
+
+          if (button.length > 0) {
+            cy.wrap(button)
+              .invoke('removeAttr', 'target')
+              .click({ force: true });
+            cy.log(`✅ ${popupType.toUpperCase()} popup closed successfully.`);
+          } else {
+            cy.log(`⚠️ Button with id ${buttonId} not found inside iframe.`);
+          }
+        });
+
+      } else if (attempt < maxRetries) {
+        cy.log(`⏳ Iframe not found for ${popupType.toUpperCase()} popup (attempt ${attempt + 1}/${maxRetries}) — retrying...`);
+        cy.wait(retryDelay).then(() => checkAndClosePopup(attempt + 1));
+      } else {
+        cy.log(`❌ Iframe for ${popupType.toUpperCase()} popup not found after ${maxRetries} attempts.`);
+      }
+    });
+  }
+
+  // start loop
+  checkAndClosePopup();
+
+  // also handle visible popup outside iframe
+  cy.wait(5000);
+  cy.get('body').then((body) => {
+    const closeIcon = body.find("div[class='scss_closeIcon__djTCa'] svg");
+    if (closeIcon.length > 0) {
+      cy.get("div[class='scss_closeIcon__djTCa'] svg").click({ force: true });
+      cy.log(`✅ Secondary popup closed for ${popupType.toUpperCase()} popup.`);
     }
   });
+}
 
-  }
-  closeAdvPopup() {
-    cy.wait(10000);
-    function waitForElementAndClosePopup() {
-      cy.get('body').then((body) => {
-        if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
-          // Wait for iframe to load
-          cy.wait(1000); // Adjust if needed for iframe render
+// ✅ usage
+closeWedAdvPopup() {
+  this.closeAdvPopup('wed');
+}
 
-          // Access the iframe
-          cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-            const iframeBody = $iframe.contents().find('body');
-            cy.wrap(iframeBody)
-              .find('#we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3')
-              .invoke('removeAttr', 'target')
-              .click({ force: true });
-          });
+closeAdvPopupMain() {
+  this.closeAdvPopup('adv');
+}
 
-        }
-      });
-    }
+closeThAdvPopup() {
+  this.closeAdvPopup('th');
+}
 
 
-    waitForElementAndClosePopup();
-    // close the pop up
-    cy.wait(5000);
-    cy.get('body').then((body) => {
-      if (body.find("div[class='scss_closeIcon__djTCa'] svg").length > 0) {
-        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
-
-      }
-    });
-  }
-
-  closeThAdvPopup() {
-    cy.wait(10000);
-    function waitForElementAndClosePopup() {
-      cy.get('body').then((body) => {
-        if (body.find("#webklipper-publisher-widget-container-notification-frame").length > 0) {
-          // Wait for iframe to load
-          cy.wait(1000); // Adjust if needed for iframe render
-
-          // Access the iframe
-          cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-            const iframeBody = $iframe.contents().find('body');
-            cy.wrap(iframeBody)
-              .find('#we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5')
-              .invoke('removeAttr', 'target')
-              .click({ force: true });
-          });
-
-        }
-      });
-    }
-waitForElementAndClosePopup();
-    // close the pop up
-    cy.wait(5000);
-    cy.get('body').then((body) => {
-      if (body.find("div[class='scss_closeIcon__djTCa'] svg").length > 0) {
-        cy.get("div[class='scss_closeIcon__djTCa'] svg").click();
-
-      }
-    });
-  }
 
 
   checkout() {
