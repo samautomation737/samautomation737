@@ -19,73 +19,69 @@ class Membership {
     cy.visit("https://cambaytiger.com/page/membership");
   }
 
- closeAdvPopup(popupType) {
-  const popupConfig = {
-    wed: 'we_wk_navigation-id-368c3126-0a26-4215-89bf-14f859f9d0fb',
-    adv: 'we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3',
-    th: 'we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5'
-  };
+closeAdvPopup() {
+  const popupConfig = [
+    'we_wk_navigation-id-368c3126-0a26-4215-89bf-14f859f9d0fb', // Wednesday popup
+    'we_wk_navigation-id-f74a5f41-ca6a-4a08-aede-a62db4bc3ad3', // Main popup
+    'we_wk_navigation-id-dc8c6039-ae8f-42b8-94e7-cc9eb007f4e5'  // Thursday popup
+  ];
 
-  const buttonId = popupConfig[popupType];
-  const maxRetries = 10; // number of attempts before giving up
-  const retryDelay = 1000; // 1s between retries
+  const maxRetries = 10;   // Number of attempts before giving up
+  const retryDelay = 1000; // 1 second between retries
 
-  function checkAndClosePopup(attempt = 0) {
-    cy.get('body').then((body) => {
-      const iframe = body.find('#webklipper-publisher-widget-container-notification-frame');
+  cy.log('🔍 Checking for advertisement iframe...');
 
-      if (iframe.length > 0) {
-        cy.log(`✅ Iframe found for ${popupType.toUpperCase()} popup, closing now...`);
-        cy.wait(1000);
+  // Cypress-friendly looping
+  cy.wrap(null).then(() => {
+    for (let i = 0; i < maxRetries; i++) {
+      cy.get('body').then((body) => {
+        const iframe = body.find('#webklipper-publisher-widget-container-notification-frame');
 
-        cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
-          const iframeBody = $iframe.contents().find('body');
-          const button = iframeBody.find(`#${buttonId}`);
+        if (iframe.length > 0) {
+          cy.log(`✅ Iframe found on attempt ${i + 1}`);
+          cy.wait(1000);
 
-          if (button.length > 0) {
-            cy.wrap(button)
-              .invoke('removeAttr', 'target')
-              .click({ force: true });
-            cy.log(`✅ ${popupType.toUpperCase()} popup closed successfully.`);
-          } else {
-            cy.log(`⚠️ Button with id ${buttonId} not found inside iframe.`);
-          }
-        });
+          cy.get('#webklipper-publisher-widget-container-notification-frame').then($iframe => {
+            const iframeBody = $iframe.contents().find('body');
 
-      } else if (attempt < maxRetries) {
-        cy.log(`⏳ Iframe not found for ${popupType.toUpperCase()} popup (attempt ${attempt + 1}/${maxRetries}) — retrying...`);
-        cy.wait(retryDelay).then(() => checkAndClosePopup(attempt + 1));
-      } else {
-        cy.log(`❌ Iframe for ${popupType.toUpperCase()} popup not found after ${maxRetries} attempts.`);
-      }
-    });
-  }
+            // Loop through all possible popup IDs
+            let popupClosed = false;
+            popupConfig.forEach((buttonId) => {
+              const button = iframeBody.find(`#${buttonId}`);
+              if (button.length > 0 && !popupClosed) {
+                cy.wrap(button)
+                  .invoke('removeAttr', 'target')
+                  .click({ force: true });
+                cy.log(`✅ Popup closed for button ID: ${buttonId}`);
+                popupClosed = true;
+              }
+            });
 
-  // start loop
-  checkAndClosePopup();
+            if (!popupClosed) {
+              cy.log('⚠️ No matching popup button found inside iframe.');
+            }
+          });
 
-  // also handle visible popup outside iframe
+          // Exit loop early (iframe found and handled)
+          return false;
+        } else {
+          cy.log(`⏳ Iframe not found (attempt ${i + 1}/${maxRetries})`);
+        }
+      });
+
+      cy.wait(retryDelay);
+    }
+  });
+
+  // Close any secondary popup outside the iframe
   cy.wait(5000);
   cy.get('body').then((body) => {
     const closeIcon = body.find("div[class='scss_closeIcon__djTCa'] svg");
     if (closeIcon.length > 0) {
       cy.get("div[class='scss_closeIcon__djTCa'] svg").click({ force: true });
-      cy.log(`✅ Secondary popup closed for ${popupType.toUpperCase()} popup.`);
+      cy.log('✅ Secondary popup closed.');
     }
   });
-}
-
-// ✅ usage
-closeWedAdvPopup() {
-  this.closeAdvPopup('wed');
-}
-
-closeAdvPopupMain() {
-  this.closeAdvPopup('adv');
-}
-
-closeThAdvPopup() {
-  this.closeAdvPopup('th');
 }
 
 
